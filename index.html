@@ -2,52 +2,54 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Rahasia Maxi</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-    }
-
-    .card {
-      background: white;
-      padding: 30px 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 400px;
-    }
-
-    h1 {
-      margin-bottom: 15px;
-      color: #333;
-    }
-
-    .name {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #555;
-    }
-
-    .id {
-      margin-top: 5px;
-      color: #888;
-      font-size: 0.95rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acharius Maximilanus Sumeisey - Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="card">
-    <h1>🔒 Rahasia Maxi</h1>
-    <div class="name">Acharius Maximilanus Sumeisey</div>
-    <div class="id">231712359</div>
-  </div>
+  <!-- Navigation -->
+  <div id="nav-container"></div>
+
+  <!-- Hero Section -->
+  <div id="hero-container"></div>
+
+  <!-- About Section -->
+  <div id="about-container"></div>
+
+  <!-- Skills Section -->
+  <div id="skills-container"></div>
+
+  <!-- Projects Section -->
+  <div id="projects-container"></div>
+
+  <!-- Contact Section -->
+  <div id="contact-container"></div>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+
+  <script>
+    // Load components dynamically
+    const components = [
+      { id: 'nav-container', file: 'components/nav.html' },
+      { id: 'hero-container', file: 'components/hero.html' },
+      { id: 'about-container', file: 'components/about.html' },
+      { id: 'skills-container', file: 'components/skills.html' },
+      { id: 'projects-container', file: 'components/projects.html' },
+      { id: 'contact-container', file: 'components/contact.html' },
+      { id: 'footer-container', file: 'components/footer.html' }
+    ];
+
+    components.forEach(component => {
+      fetch(component.file)
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById(component.id).innerHTML = html;
+        })
+        .catch(error => console.error(`Error loading ${component.file}:`, error));
+    });
+  </script>
 
 </body>
 </html>
